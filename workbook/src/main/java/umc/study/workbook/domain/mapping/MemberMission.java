@@ -8,9 +8,9 @@ import umc.study.workbook.domain.common.BaseEntity;
 import umc.study.workbook.domain.enums.MissionStatus;
 
 @Entity
-@Getter
+@Data
 @Builder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @AllArgsConstructor
 public class MemberMission extends BaseEntity {
 

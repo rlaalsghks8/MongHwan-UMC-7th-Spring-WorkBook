@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
+@Data
 @Builder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @AllArgsConstructor
 public class Mission {
 

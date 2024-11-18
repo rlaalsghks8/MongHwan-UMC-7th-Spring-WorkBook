@@ -7,9 +7,9 @@ import umc.study.workbook.domain.mapping.ReviewImage;
 import java.util.List;
 
 @Entity
-@Getter
+@Data
 @Builder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @AllArgsConstructor
 public class Review {
 
