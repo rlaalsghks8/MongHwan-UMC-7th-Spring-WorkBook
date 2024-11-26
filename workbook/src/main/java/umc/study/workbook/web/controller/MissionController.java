@@ -3,10 +3,8 @@ package umc.study.workbook.web.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.*;
 import umc.study.workbook.apiPayload.ApiResponse;
 import umc.study.workbook.converter.MissionConverter;
 import umc.study.workbook.converter.ReviewConverter;
@@ -37,6 +35,15 @@ public class MissionController {
 
         Mission mission = missionCommandService.addMission(request);
         return ApiResponse.onSuccess(MissionConverter.addNewMissionResultDto(mission));
+
+    }
+
+    @GetMapping("/myMissions")
+    public ApiResponse<Page<MissionResponseDto.MyMissionListDTO>> myMissions(@RequestParam Long userId, @RequestParam int pageNo){
+
+        Page<MissionResponseDto.MyMissionListDTO> myMissions = missionCommandService.myMissions(userId, pageNo);
+
+        return ApiResponse.onSuccess(myMissions);
 
     }
 

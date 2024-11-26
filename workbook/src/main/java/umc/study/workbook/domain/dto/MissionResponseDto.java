@@ -1,9 +1,7 @@
 package umc.study.workbook.domain.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import umc.study.workbook.domain.enums.MissionStatus;
 
 import java.time.LocalDateTime;
 
@@ -25,5 +23,27 @@ public class MissionResponseDto {
     public  static class AddNewMissionResultDTO{
         Long storeId;
         LocalDateTime createdAt;
+    }
+
+    @Builder
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class StoreMissionListDTO{
+        Long missionId;
+        Integer point;
+        String content;
+        LocalDateTime createdAt;
+    }
+
+    @Builder
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MyMissionListDTO{
+        Long missionId;
+        MissionStatus status;
+        LocalDateTime createdAt;
+        LocalDateTime expiredAt;
     }
 }

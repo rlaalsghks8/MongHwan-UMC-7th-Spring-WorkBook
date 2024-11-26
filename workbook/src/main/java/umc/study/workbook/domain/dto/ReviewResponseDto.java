@@ -1,11 +1,9 @@
 package umc.study.workbook.domain.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class ReviewResponseDto {
 
@@ -16,5 +14,19 @@ public class ReviewResponseDto {
     public static class ReviewResultDTO{
         Long reviewId;
         LocalDateTime createdAt;
+    }
+
+
+    @Builder
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MyReviewListDto{
+        Long reviewId;
+        String nickName;
+        Float score;
+        LocalDateTime createdAt;
+        String content;
     }
 }

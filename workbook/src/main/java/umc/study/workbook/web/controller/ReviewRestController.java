@@ -3,10 +3,8 @@ package umc.study.workbook.web.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.*;
 import umc.study.workbook.apiPayload.ApiResponse;
 import umc.study.workbook.converter.MemberConverter;
 import umc.study.workbook.converter.ReviewConverter;
@@ -29,5 +27,15 @@ public class ReviewRestController {
     public ApiResponse<ReviewResponseDto.ReviewResultDTO> addReview(@RequestBody @Valid ReviewRequestDto.ReviewDto request){
         Review review = reviewCommandService.writeReview(request);
         return ApiResponse.onSuccess(ReviewConverter.toAddResultDto(review));
+    }
+
+
+    @GetMapping("/myreviewList")
+    public ApiResponse<Page<ReviewResponseDto.MyReviewListDto>> myReviewList(@RequestParam Long userId,@RequestParam int pageNo){
+
+        Page<ReviewResponseDto.MyReviewListDto> listdto = reviewCommandService.getMyReviews(userId,pageNo);
+
+
+        return ApiResponse.onSuccess(listdto);
     }
 }
