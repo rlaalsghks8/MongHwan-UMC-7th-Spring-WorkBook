@@ -7,6 +7,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import umc.study.workbook.domain.common.BaseEntity;
 import umc.study.workbook.domain.enums.Gender;
 import umc.study.workbook.domain.enums.MemberStatus;
+import umc.study.workbook.domain.enums.Role;
 import umc.study.workbook.domain.mapping.MemberAgree;
 import umc.study.workbook.domain.mapping.MemberMission;
 import umc.study.workbook.domain.mapping.MemberPrefer;
@@ -48,8 +49,14 @@ public class Member extends BaseEntity {
 
     private LocalDate inactiveDate;
 
-    //    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 50)
     private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     private Integer point;
 
